@@ -21,9 +21,11 @@ public class TestController {
         this.backendRequests = backendRequests;
     }
 
-    @RequestMapping(value="/test/nba", method=RequestMethod.GET)
+    @RequestMapping(value="/nba/players", method=RequestMethod.GET)
     public ResponseEntity<PlayerResponse> getNBATest(@RequestHeader(value = "name") String name, @RequestHeader(value = "Ocp-Apim-Subscription-Key") String sdToken) {
         List<PlayerResponse> playerResponse =  backendRequests.PlayerInformation_Get(sdToken);
+
+        //TODO: make call asynchronous and store response in db. All subsequent calls will have latest stored data on players
         return null;
     }
 }
